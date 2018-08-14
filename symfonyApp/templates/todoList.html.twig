@@ -1,0 +1,29 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Todolist app{% endblock %}
+
+{% block body %}
+    <div>Hello twig template!</div>
+
+    <div class="todoList">
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Due date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for todo in todos %}
+                <tr>
+                    <td>{{ todo.description }}</td>
+                    <td>{{ todo.dueDate }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

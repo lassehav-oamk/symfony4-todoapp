@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+
+todoList:
+  path: /
+  controller: App\Controller\MainController::todoList
