@@ -22,7 +22,7 @@ class Todo
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $dueDate;
 

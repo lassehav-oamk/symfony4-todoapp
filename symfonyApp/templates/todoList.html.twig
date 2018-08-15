@@ -19,7 +19,7 @@
             {% for todo in todos %}
                 <tr>
                     <td>{{ todo.description }}</td>
-                    <td>{{ todo.dueDate }}</td>
+                    <td>{{ todo.dueDate | date('d.m.Y')}}</td>
                     <td></td>
                 </tr>
             {% endfor %}
