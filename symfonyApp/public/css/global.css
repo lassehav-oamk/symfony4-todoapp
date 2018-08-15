@@ -2,3 +2,8 @@
 {
     margin-top: 30px;
 }
+
+.isDone
+{
+    text-decoration: line-through;
+}

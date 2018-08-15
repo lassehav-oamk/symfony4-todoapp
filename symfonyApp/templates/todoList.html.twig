@@ -4,8 +4,6 @@
 {% block title %}Todolist app{% endblock %}
 
 {% block body %}
-    <div>Hello twig template!</div>
-
     <div class="todoList">
         <table>
             <thead>
@@ -20,7 +18,7 @@
                 <tr>
                     <td>{{ todo.description }}</td>
                     <td>{{ todo.dueDate | date('d.m.Y')}}</td>
-                    <td></td>
+                    <td><a href="#">Mark done</a> | <a href="{{ path('viewTodoItem', {id: todo.id}) }}">View</a></td>
                 </tr>
             {% endfor %}
             </tbody>

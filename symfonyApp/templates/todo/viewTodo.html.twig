@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View todo{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('todoList') }}"><- Back to list view</a>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

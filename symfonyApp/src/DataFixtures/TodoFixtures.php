@@ -10,9 +10,6 @@ class TodoFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $descriptions = array(
             'Get milk',
             'Learn Symfony',
@@ -21,18 +18,16 @@ class TodoFixtures extends Fixture
             'Add input UI',
             'Implement POST request');
 
-        $date = new \DateTime();
-
         for($i = 0; $i < count($descriptions); $i++)
         {
+            $date = new \DateTime();
+            $date->add(new \DateInterval('P' . $i . 'D'));
+
             $todo = new Todo();
             $todo->setDescription($descriptions[$i]);
             $todo->setIsDone(false);
             $todo->setDueDate($date);
             $manager->persist($todo);
-
-            $date->add(new \DateInterval('P1D'));
-
         }
 
         $manager->flush();
