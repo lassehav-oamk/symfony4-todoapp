@@ -9,4 +9,8 @@ todoList:
 
 viewTodoItem:
   path: /todo/{id}
-  controller: App\Controller\TodoController:viewTodo
+  controller: App\Controller\TodoController::viewTodo
+
+todoUpdateSuccess:
+  path: /todo/{id}/updateSuccess
+  controller: App\Controller\TodoController::todoUpdated
