@@ -1,4 +1,4 @@
-# Project to get you started with a Vagrant VM and Symfony 4 
+# Symfony 4 todo list application example 
 
 This project is an example of a classic todo list implementation with Symfony 4
 
