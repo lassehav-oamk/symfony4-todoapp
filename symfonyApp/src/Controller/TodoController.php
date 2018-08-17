@@ -30,18 +30,35 @@ class TodoController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $todo = $form->getData();
-
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
+        if ($form->isSubmitted() && $form->isValid())
+        {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($todo);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('todoUpdateSuccess', ['id' => $id]);
+            if($form->get('save')->isClicked())
+            {
+                // $form->getData() holds the submitted values
+                // but, the original `$task` variable has also been updated
+                $todo = $form->getData();
+
+                // ... perform some action, such as saving the task to the database
+                // for example, if Task is a Doctrine entity, save it!
+
+                $entityManager->persist($todo);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('todoUpdateSuccess', ['id' => $id]);
+            }
+            else if($form->get('delete')->isClicked())
+            {
+                $todo = $entityManager->getRepository(Todo::class)->find($id);
+                $entityManager->remove($todo);
+
+                // Todo redirect to delete ok
+                return $this->redirectToRoute('todoUpdateSuccess', ['id' => $id]);
+
+            }
+
+
         }
 
         return $this->render('todo/viewTodo.html.twig', [
