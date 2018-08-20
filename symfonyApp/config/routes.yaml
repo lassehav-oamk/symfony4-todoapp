@@ -14,3 +14,7 @@ viewTodoItem:
 todoUpdateSuccess:
   path: /todo/{id}/updateSuccess
   controller: App\Controller\TodoController::todoUpdated
+
+todoDeleteSuccess:
+  path: /todo/{id}/deleteSuccess
+  controller: App\Controller\TodoController::todoDeleted

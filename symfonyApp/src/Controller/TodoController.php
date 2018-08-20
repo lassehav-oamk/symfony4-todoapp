@@ -53,12 +53,11 @@ class TodoController extends AbstractController
                 $todo = $entityManager->getRepository(Todo::class)->find($id);
                 $entityManager->remove($todo);
 
+                $entityManager->flush();
+
                 // Todo redirect to delete ok
-                return $this->redirectToRoute('todoUpdateSuccess', ['id' => $id]);
-
+                return $this->redirectToRoute('todoDeleteSuccess', ['id' => $id]);
             }
-
-
         }
 
         return $this->render('todo/viewTodo.html.twig', [
@@ -72,5 +71,10 @@ class TodoController extends AbstractController
         $todo = $this->getDoctrine()->getManager()->getRepository(Todo::class)->find($id);
 
         return $this->render('todo/todoUpdated.html.twig', ['todo' => $todo]);
+    }
+
+    public function todoDeleted($id)
+    {
+        return $this->render('todo/todoDeleted.html.twig', ['id' => $id]);
     }
 }
