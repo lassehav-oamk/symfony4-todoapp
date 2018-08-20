@@ -105,6 +105,12 @@ class TodoController extends AbstractController
 
         if ($newForm->isSubmitted() && $newForm->isValid())
         {
+            $newTodo = $newForm->getData();
+            $newTodo->setIsDone(false);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newTodo);
+            $entityManager->flush();
+
             return $this->redirectToRoute('todoList');
         }
         else
