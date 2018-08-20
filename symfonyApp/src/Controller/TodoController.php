@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\NewTodo;
 
 class TodoController extends AbstractController
 {
@@ -73,8 +74,26 @@ class TodoController extends AbstractController
         return $this->render('todo/todoUpdated.html.twig', ['todo' => $todo]);
     }
 
+
     public function todoDeleted($id)
     {
         return $this->render('todo/todoDeleted.html.twig', ['id' => $id]);
+    }
+
+    public function todoAddNew(Request $request)
+    {
+        $newTodo = new Todo();
+        $newForm = $this->createForm(NewTodo::class, $newTodo);
+
+        $newForm->handleRequest($request);
+
+        if ($newForm->isSubmitted() && $newForm->isValid())
+        {
+            return $this->redirectToRoute('todoList');
+        }
+        else
+        {
+            return $this->render('todo/todoAddFailed.html.twig');
+        }
     }
 }
