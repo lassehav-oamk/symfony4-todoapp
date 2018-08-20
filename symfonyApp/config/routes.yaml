@@ -11,6 +11,11 @@ viewTodoItem:
   path: /todo/{id}
   controller: App\Controller\TodoController::viewTodo
 
+todoAddNew:
+  path: todoNew
+  controller: App\Controller\TodoController:todoAddNew
+
 todoUpdateSuccess:
   path: /todo/{id}/updateSuccess
   controller: App\Controller\TodoController::todoUpdated
+

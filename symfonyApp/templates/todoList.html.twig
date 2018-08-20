@@ -4,6 +4,22 @@
 {% block title %}Todolist app{% endblock %}
 
 {% block body %}
+
+    <div>
+        Add new todo:
+        {{ form_start(newTodoForm) }}
+        {{ form_label(newTodoForm.description) }}
+        {{ form_widget(newTodoForm.description) }}
+
+        {{ form_label(newTodoForm.dueDate) }}
+        {{ form_widget(newTodoForm.dueDate) }}
+
+        {{ form_label(newTodoForm.save) }}
+        {{ form_widget(newTodoForm.save) }}
+
+        {{ form_end(newTodoForm) }}
+    </div>
+
     <div class="todoList">
         <table>
             <thead>
