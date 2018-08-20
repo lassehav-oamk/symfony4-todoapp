@@ -5,7 +5,7 @@
 
 todoList:
   path: /
-  controller: App\Controller\MainController::todoList
+  controller: App\Controller\TodoController::todoList
 
 viewTodoItem:
   path: /todo/{id}
