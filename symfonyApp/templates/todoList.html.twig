@@ -31,10 +31,10 @@
             </thead>
             <tbody>
             {% for todo in todos %}
-                <tr>
+                <tr class="{{ todo.isDone ? 'isDone' : '' }}">
                     <td>{{ todo.description }}</td>
                     <td>{{ todo.dueDate | date('d.m.Y')}}</td>
-                    <td><a href="#">Mark done</a> | <a href="{{ path('viewTodoItem', {id: todo.id}) }}">View</a></td>
+                    <td><a href="#" class="mark_done" data-id="{{ todo.id }}">Mark done</a> | <a href="{{ path('viewTodoItem', {id: todo.id}) }}">View</a></td>
                 </tr>
             {% endfor %}
             </tbody>

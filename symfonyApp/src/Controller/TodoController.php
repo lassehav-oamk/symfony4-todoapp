@@ -8,8 +8,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\NewTodo;
+use Symfony\Component\HttpFoundation\Response;
 
 class TodoController extends AbstractController
 {
@@ -117,5 +119,17 @@ class TodoController extends AbstractController
         {
             return $this->render('todo/todoAddFailed.html.twig');
         }
+    }
+
+    public function todoToggleIsDone(Request $request, $id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $todo = $entityManager->getRepository(Todo::class)->find($id);
+        $todo->setIsDone(!$todo->getIsDone());
+        $entityManager->flush();
+
+
+        //return $this->redirectToRoute('todoList');
+        return new JsonResponse(['status' => 'OK', 'id' => $id]);
     }
 }

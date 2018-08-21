@@ -18,8 +18,19 @@ todoAddNew:
 todoUpdateSuccess:
   path: /todo/{id}/updateSuccess
   controller: App\Controller\TodoController::todoUpdated
+  requirements:
+    id: '\d+'
 
 todoDeleteSuccess:
   path: /todo/{id}/deleteSuccess
   controller: App\Controller\TodoController::todoDeleted
+  requirements:
+    id: '\d+'
+
+todoToggleIsDone:
+  path: /todo/{id}/toggleIsDone
+  controller: App\Controller\TodoController::todoToggleIsDone
+  methods:    [POST]
+  requirements:
+    id: '\d+'
 

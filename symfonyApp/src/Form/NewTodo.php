@@ -20,7 +20,7 @@ class NewTodo extends AbstractType
         $builder
             ->setAction($options['action'])
             ->add('description', TextType::class)
-            ->add('dueDate', DateType::class);
+            ->add('dueDate', DateType::class, array('widget' => 'single_text', 'format' => 'dd.MM.yyyy'));
     }
 
 }
