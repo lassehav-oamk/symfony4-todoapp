@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Todo;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -29,6 +30,13 @@ class TodoFixtures extends Fixture
             $todo->setDueDate($date);
             $manager->persist($todo);
         }
+
+        $testUser = new User();
+        $testUser->setEmail('test@test');
+        $testUser->setUsername('tester');
+        $testUser->setSalt('abcdef');
+        $testUser->setPassword(password_hash('test_password', PASSWORD_BCRYPT));
+        $manager->persist($testUser);
 
         $manager->flush();
     }

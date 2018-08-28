@@ -2,33 +2,38 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+entry:
+  path: /
+  controller: App\Controller\EntryController::entry
 
 todoList:
-  path: /
+  path: /todoList
   controller: App\Controller\TodoController::todoList
 
 viewTodoItem:
-  path: /todo/{id}
+  path: /todoList/todo/{id}
   controller: App\Controller\TodoController::viewTodo
+  requirements:
+    id: '\d+'
 
 todoAddNew:
-  path: todoNew
+  path: /todoList/new
   controller: App\Controller\TodoController:todoAddNew
 
 todoUpdateSuccess:
-  path: /todo/{id}/updateSuccess
+  path: /todoList/todo/{id}/updateSuccess
   controller: App\Controller\TodoController::todoUpdated
   requirements:
     id: '\d+'
 
 todoDeleteSuccess:
-  path: /todo/{id}/deleteSuccess
+  path: /todoList/todo/{id}/deleteSuccess
   controller: App\Controller\TodoController::todoDeleted
   requirements:
     id: '\d+'
 
 todoToggleIsDone:
-  path: /todo/{id}/toggleIsDone
+  path: /todoList/todo/{id}/toggleIsDone
   controller: App\Controller\TodoController::todoToggleIsDone
   methods:    [POST]
   requirements:
