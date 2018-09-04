@@ -39,3 +39,5 @@ todoToggleIsDone:
   requirements:
     id: '\d+'
 
+login:
+  path: /login

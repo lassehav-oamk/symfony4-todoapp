@@ -19,8 +19,11 @@ security:
             #pattern:    ^/todoList
 
             anonymous: ~
-            http_basic: ~
             provider: user_provider
+            form_login:
+                login_path: /
+                check_path: /login
+                default_target_path: todoList
 
             # activate different ways to authenticate
 
@@ -35,4 +38,5 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         #- { path: ^/ , roles: IS_AUTHENTICATED_ANONYMOUSLY}
+         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/todoList, roles: ROLE_USER }
