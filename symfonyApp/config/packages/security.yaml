@@ -4,7 +4,7 @@ security:
         App\Entity\User:
             algorithm: bcrypt
     providers:
-        our_db_provider:
+        user_provider:
             entity:
                 class: App\Entity\User
                 property: username
@@ -15,9 +15,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            pattern:    ^/todoList
+            # No pattern means for all URLs
+            #pattern:    ^/todoList
+
+            anonymous: ~
             http_basic: ~
-            provider: our_db_provider
+            provider: user_provider
 
             # activate different ways to authenticate
 
@@ -31,5 +34,5 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/ , roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        #- { path: ^/ , roles: IS_AUTHENTICATED_ANONYMOUSLY}
          - { path: ^/todoList, roles: ROLE_USER }
