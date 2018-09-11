@@ -19,7 +19,7 @@ class TodoController extends AbstractController
     {
         $todos = $this->getDoctrine()
             ->getRepository(Todo::class)
-            ->findAll();
+            ->findBy(array('owner' => $this->getUser()));
 
         $newTodo = new Todo();
         $newForm = $this->createForm(NewTodo::class, $newTodo, array('action' => $this->generateUrl('todoAddNew')));

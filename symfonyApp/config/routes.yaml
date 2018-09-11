@@ -41,3 +41,6 @@ todoToggleIsDone:
 
 login:
   path: /login
+
+logout:
+  path: /logout

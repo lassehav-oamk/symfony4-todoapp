@@ -24,6 +24,9 @@ security:
                 login_path: /
                 check_path: /login
                 default_target_path: todoList
+            logout:
+                path: /logout
+                target: entry
 
             # activate different ways to authenticate
 
