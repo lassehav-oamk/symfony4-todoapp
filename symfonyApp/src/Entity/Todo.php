@@ -37,6 +37,11 @@ class Todo
      */
     private $owner;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $notificationSent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Todo
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getNotificationSent(): ?bool
+    {
+        return $this->notificationSent;
+    }
+
+    public function setNotificationSent(bool $notificationSent): self
+    {
+        $this->notificationSent = $notificationSent;
 
         return $this;
     }

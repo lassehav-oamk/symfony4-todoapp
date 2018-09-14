@@ -1,0 +1,12 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    #delivery_strategy: realtime
+    #transport:
+    #    class: Swift_SmtpTransport
+    #    param:
+    #    host: smtp.sendgrid.net
+    #    port: 587
+    #    encryption: ~
+    #    username: sendgridusername
+    #    password: sendgridpassword
